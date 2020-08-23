@@ -1,0 +1,77 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define pb push_back
+#define mp make_pair
+#define ff first
+#define ss second
+#define pi pair<int, int>
+#define pl pair<ll, ll>
+#define vi vector<int>
+#define vl vector<ll>
+#define MOD ll(1000000007)
+
+vl v,w ;
+
+ll solve(){
+	  ll i, n, j, t, m, x, y, z, k;
+
+    ll ans=0;
+
+
+    cin>>n;
+
+    if(n<2)
+        return 0;
+    if(n==2)
+        return 2;
+    
+    v.clear();
+    v.reserve(n);
+    
+    for(i=0; i<n; i++)
+    {
+        cin>>x;
+        v.pb(x);
+    }
+    
+    w.clear();
+	  w.reserve(n);
+
+    for(i=1; i<n; i++)
+    {
+        w.pb(v[i]-v[i-1]);
+    }
+
+    for(i=0;i<n-1;i++)
+    {
+        int j=i;
+        while(w[j]==w[j+1])
+            j++;
+        ans=max(ans, j-i+1); 
+        i=(i==j)?i:j;   
+    }		
+
+    return ans+1;
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(false); cin.tie(NULL);
+
+	ll i, n, j, t, m, x, y, z, k;
+
+	cin>>t;
+	for(int tc=1; tc<=t; tc++)
+	{
+
+        ll ans=solve();
+        
+        cout<<"Case #"<<tc<<": "<<ans<<endl;
+	}
+
+	return 0;
+}
+
